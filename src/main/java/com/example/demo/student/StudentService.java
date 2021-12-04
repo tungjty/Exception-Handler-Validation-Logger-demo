@@ -3,6 +3,7 @@ package com.example.demo.student;
 import com.example.demo.exception.EmailDuplicatedException;
 import com.example.demo.exception.StudentNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +15,9 @@ import java.util.Optional;
 public class StudentService {
 
     private final StudentRepository studentRepository ;
+
+    @Value("${error.email.duplicated}")
+    private String errorEmailMessage;
 
     @Autowired
     public StudentService(StudentRepository studentRepository) {
@@ -30,8 +34,7 @@ public class StudentService {
                 studentRepository.findStudentByEmail(student.getEmail());
 
         if(studentOptional.isPresent()) {
-//            throw new IllegalStateException("Email already existed :(");
-            throw new EmailDuplicatedException("email already existed :(");
+            throw new EmailDuplicatedException(errorEmailMessage);
         }
         studentRepository.save(student);
     }
