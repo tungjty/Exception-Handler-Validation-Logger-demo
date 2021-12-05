@@ -1,21 +1,44 @@
-#error:
-#  email:
-#    duplicated: email already existed !
-#
-#spring:
-#  datasource:
-#    username: root
-#    url: jdbc:mysql://localhost:3306/dbstudent
-#    password: '12345678'
-#  jpa:
-#    properties:
-#      hibernate:
-#        dialect: org.hibernate.dialect.MySQL8Dialect
-#        format_sql: 'false'
-#    hibernate:
-#      ddl-auto: create
-#    show-sql: 'true'
-#
-#server:
-#  error:
-#    include-message: always
+error:
+  email:
+    duplicated: email already existed !
+
+spring:
+  profiles:
+    active: DEV
+
+---
+spring:
+  profiles: DEV
+  datasource:
+    username: root
+    url: jdbc:mysql://localhost:3306/dbstudent_dev
+    password: '12345678'
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: 'true'
+    hibernate:
+      ddl-auto: create
+    show-sql: 'true'
+---
+
+spring:
+  profiles: QA
+  datasource:
+    username: root
+    url: jdbc:mysql://localhost:3306/dbstudent_qa
+    password: '12345678'
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: 'false'
+    hibernate:
+      ddl-auto: create
+    show-sql: 'true'
+---
+
+server:
+  error:
+    include-message: always
