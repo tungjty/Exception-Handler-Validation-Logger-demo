@@ -1,0 +1,1 @@
+java -jar Exception-Handler-Validation-Logger-demo-0.0.1-SNAPSHOT.jar --spring.profiles.active=DEV
