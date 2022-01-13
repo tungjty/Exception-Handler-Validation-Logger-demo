@@ -1,5 +1,7 @@
 
 ${AnsiColor.YELLOW}
+${spring-boot.formatted-version}
+${AnsiStyle.BOLD}
  .-. .--. .--. --.--.   . .--.     .--.  .--.  .--. .---.
 (   )|   )|   )  |  |\  |:         |   ):    ::    :  |  
  `-. |--' |--'   |  | \ || --.     |--: |    ||    |  |  
